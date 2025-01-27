@@ -1,22 +1,54 @@
-You will implement a cellular automaton modeling the Game of Life.
+# Game of Life - Cellular Automaton (C)
 
-The world will be represented by a rectangular grid, where each cell can either be:
-Alive
-Dead
+## Description
+**The Game of Life** is a cellular automaton created by British mathematician John Conway. It is a zero-player game where the evolution of the game is determined by its initial state. The world is represented by a rectangular grid where each cell can be:
 
-We give a proportion p between 0 and 1; initially each cell is, with probability p alive, and with probability 1-p dead.
+- Alive (`+`)
+- Dead (`-`)
+- Newborn (`0`)
 
-Every cell interacts with its eight neighbors, which are the cells that are horizontally, vertically, or diagonally adjacent.
+Each cell interacts with its eight neighbors (horizontally, vertically, and diagonally). Each generation, the cells evolve according to the following rules:
+- Any live cell with fewer than two live neighbors dies (underpopulation).
+- Any live cell with two or three live neighbors lives on to the next generation.
+- Any live cell with more than three live neighbors dies (overpopulation).
+- Any dead cell with exactly three live neighbors becomes alive (reproduction).
 
-At each step in time, the following transitions occur:
-Any alive cell with fewer than two alive neighbors dies, as if by underpopulation.
-Any alive cell with two or three alive neighbors lives on to the next generation.
-Any alive cell with more than three alive neighbors dies, as if by overpopulation.
-Any dead cell with exactly three alive neighbors becomes an alive cell, as if by reproduction.
+## Features
+- **Grid Representation**: A rectangular grid where each cell can be alive (`+`), dead (`-`), or newborn (`0`).
+- **Random Initialization**: Each cell has a probability `p` (between 0 and 1) of being alive at the start.
+- **Neighbor Interaction**: Each cell interacts with its eight neighbors (horizontally, vertically, and diagonally).
+- **Automatic Generation**: After each step, the grid is updated according to the rules. The game ends when the grid no longer changes between generations.
 
-You will define the world with the help of structures.
-Between each generation, you should automatically know if it is necessary to make the next generation or to quit the game.
-To represent a cell, you must use the following symbols:
-"+": alive
-"-": dead
-"0": newborn (is considered as an alive state, and will be applied one of the 2 other states at the next generation)
+## Technologies Used
+- **C Language**: The game is developed using the C language for its simplicity and memory management efficiency.
+- **Structures**: Structures are used to represent the grid and cells.
+
+## Installation and Execution
+
+1. **Clone the repository**:
+   ```bash
+   git clone https://github.com/your-username/Game-of-Life.git
+
+
+# Example of Grid Evolution
+# Initial Grid (for p = 0.3):
+
+- - + - - - - - -
++ - - - + - - - -
+- + - + - - - + -
+- - - + - - + - -
++ - - + - - - - -
+# After One Generation:
+
+- - - - + - - + -
++ - + - - + + - -
+- + - - + - - - -
+- - - - - + - - -
++ - - - + - + - -
+# After Two Generations:
+
++ - - + - - + - -
+- + - - + - - - -
++ - - - + - + - -
+- - - - - - - - -
++ + - - + - - + -
